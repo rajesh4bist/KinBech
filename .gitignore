@@ -2,3 +2,4 @@ node_modules
 Backend/target
 Backend/HELP.md
 Backend/src/main/resources/application.properties
+.idea
