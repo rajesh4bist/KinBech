@@ -1,0 +1,75 @@
+.main-container-homepage {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 20px;
+    max-width: 1500px;
+    margin: 0 auto;
+}
+
+.main-container-homepage>div {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    justify-self: center;
+    border: 1px solid #ccc;
+    padding: 20px;
+    border-radius: 8px;
+    min-height: 300px;
+}
+
+.main-container-homepage>div>.product-image {
+    margin: 0;
+    height: 200px;
+}
+
+.main-container-homepage>div>.rating-container>.rating-image {
+    height: 20px;
+    margin: 0;
+}
+
+p {
+    font-size: 18px;
+    font: 800;
+    margin: 0;
+    margin-top: 10px;
+}
+
+.dropdown-number {
+    margin-top: 10px;
+    border-radius: 7px;
+    height: 25px;
+    width: 50px;
+    border: 2px solid #ccc;
+    padding: 0 5px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.add-to-cart-btn {
+    margin-top: 22px;
+    height: 35px;
+    width: 190px;
+    background-color: rgb(23, 172, 87);
+    color: white;
+    font-size: 17px;
+    border: none;
+    border-radius: 10px;
+}
+
+.add-to-cart-btn:hover {
+    background-color: rgb(67, 184, 118);
+    cursor: pointer;
+}
+
+.rating-container{
+    display: flex;
+    align-items: center; /* This perfectly centers the text with the image vertically */
+    gap: 8px; /* Adds a nice space between the stars and the number */
+    margin-top: 0px;
+}
+.rating-number {
+    margin: 0; /* Removes default paragraph spacing so it aligns cleanly */
+    font-size: 20px;
+    margin-left: 2px;
+    padding-top: 3px;
+}
