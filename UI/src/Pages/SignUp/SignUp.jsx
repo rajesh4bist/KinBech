@@ -1,4 +1,5 @@
 import { Link } from 'react-router'
+import axios from 'axios'
 import './SignUp.css'
 import { useState } from 'react'
 
@@ -25,18 +26,15 @@ const SignUp = () => {
         setLoading(true);
         try {
             const response = await axios.post(
-                'http://localhost:8080/users',
+                'http://localhost:8080/users/signup',
                 user
             );
+            console.log(response.data);
         } catch (error) {
             console.error(error);
-        }finally{
-        setLoading(false);
+        } finally {
+            setLoading(false);
         }
-        console.log("sent");
-        console.log(user);
-
-
     }
 
 
