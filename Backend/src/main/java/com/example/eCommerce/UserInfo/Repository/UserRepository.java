@@ -1,5 +1,8 @@
 package com.example.eCommerce.UserInfo.Repository;
 
-public interface UserRepository {
+import com.example.eCommerce.UserInfo.User;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface UserRepository extends JpaRepository<User, Long> {
 
 }

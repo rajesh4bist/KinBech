@@ -10,7 +10,15 @@ public class User {
 
     private String name;
     private String email;
-    private String mobile;
+    private String password;
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
 
     public Long getId() {
         return id;
@@ -36,11 +44,4 @@ public class User {
         this.email = email;
     }
 
-    public String getMobile() {
-        return mobile;
-    }
-
-    public void setMobile(String mobile) {
-        this.mobile = mobile;
-    }
 }
