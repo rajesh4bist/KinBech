@@ -1,0 +1,28 @@
+.signup-page-container {
+    margin-left: 15px;
+}
+
+.form-main {
+    display: flex;
+    margin-top: 20px;
+    gap: 150px;
+    justify-content: center;
+}
+
+.input-fields {
+    display: flex;
+    flex-direction: column;
+    max-width: fit-content;
+    gap: 20px;
+}
+
+.input-fields>input {
+    border-radius: 18px;
+    height: 30px;
+    padding-left: 15px;
+    width: 250px;
+}
+
+.signup-text-main{
+    text-align: center;
+}
