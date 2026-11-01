@@ -193,6 +193,15 @@ body:has(.signup-page-container) {
     text-align: left;
 }
 
+.form-main .input-fields .error-field {
+    position: absolute;
+    top: 100%;
+    left: 32px;
+    margin: 6px 0 0;
+    font-size: 14px;
+    text-align: left;
+}
+
 @media (max-width: 720px) {
     .signup-page-container {
         padding: 40px 28px 48px;

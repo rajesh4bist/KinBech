@@ -21,7 +21,9 @@ public class UserService {
         if (!Objects.equals(request.getPassword(), request.getConfirmPassword())) {
             throw new RuntimeException("Passwords do not match");
         }
-
+        if (userRepository.existsByEmail(request.getEmail())) {
+            throw new RuntimeException("Email already exists");
+        }
         User user = new User();
         user.setName(request.getName());
         user.setEmail(request.getEmail());

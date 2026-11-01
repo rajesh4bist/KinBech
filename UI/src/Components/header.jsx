@@ -6,8 +6,8 @@ const Header = () => {
         <div className="header">
             <div className="left-section">
                 <Link to="/" className="header-link" id='logo-image-main'>
-                    <img className="logo" src="images/logo-main.png" />
-                    <img className="mobile-logo" src="images/mobile-logo.png" />
+                    <img className="logo" src="/images/logo-main.png" />
+                    <img className="mobile-logo" src="/images/mobile-logo.png" />
                 </Link>
             </div>
 
@@ -16,7 +16,7 @@ const Header = () => {
                 <input className="search-bar" type="text" placeholder="Search" name='searchbar' />
 
                 <button className="search-button">
-                    <img className="search-icon" src="images/search-icon.png" />
+                    <img className="search-icon" src="/images/search-icon.png" />
                 </button>
             </div>
 
@@ -27,12 +27,12 @@ const Header = () => {
                 </Link>
 
                 <Link to="cart" className="cart-link header-link">
-                    <img className="cart-icon" src="images/cart-icon.png" />
+                    <img className="cart-icon" src="/images/cart-icon.png" />
                     <div className="cart-quantity">15</div>
                     <div className="cart-text">Cart</div>
                 </Link>
 
-                <Link to="sign-up" className="signup-link header-link">
+                <Link to="signup" className="signup-link header-link">
                     <div>Sign Up</div>
                 </Link>
             </div>

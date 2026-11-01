@@ -12,6 +12,7 @@ const SignUp = () => {
     });
     const [loading, setLoading] = useState(false);
     const [match, setMatch] = useState(true);
+    const [error, setError] = useState(null);
 
     const takeUser = (e) => {
         const { name, value } = e.target;
@@ -20,16 +21,23 @@ const SignUp = () => {
             ...prev,
             [name]: value
         }));
+        if (name === "password" || name === "confirmPassword") {
+            setMatch(true);
+        }
+        if (name === "email") {
+            setError(null);
+        }
     }
 
     const submit = async (e) => {
         e.preventDefault();
-        if (user.password != user.confirmPassword) {
+        setError(null);
+        if (user.password !== user.confirmPassword) {
             console.log("passwords don't match");
             setMatch(false);
             return;
         }
-        
+
         setLoading(true);
         setMatch(true);
 
@@ -40,6 +48,7 @@ const SignUp = () => {
             );
             console.log(response.data);
         } catch (error) {
+            setError(error.response?.data || "Unable to connect to server");
             console.error(error);
         } finally {
             setLoading(false);
@@ -62,13 +71,14 @@ const SignUp = () => {
                     <input type="password" placeholder="Password" name='password' value={user.password} onChange={takeUser} required />
                     <input type="password" placeholder="Confirm Password" name='confirmPassword' value={user.confirmPassword} onChange={takeUser} required />
                     {match ? "" : <p className='no-match-field' style={{ color: "red" }}>Passwords don't match</p>}
+                    {error && <p className='error-field'>{error}</p>}
                 </div>
 
                 <div>
                     <button className="signup-btn-main" type="submit" disabled={loading}> {loading ? "Signing Up" : "Sign Up"}</button>
 
                     <p>Already have an account?
-                        <Link to="#">
+                        <Link to="/login">
                             <strong>Log in</strong>
                         </Link>
                     </p>

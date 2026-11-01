@@ -20,10 +20,11 @@ public class UserController {
 
     @PostMapping("/signup")
     public ResponseEntity<String> createUser(@RequestBody SignupRequest request) {
-        User createdUser = userService.createUser(request);
-        if (createdUser == null) {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Passwords don't match");
+        try {
+            User createdUser = userService.createUser(request);
+            return ResponseEntity.ok("User Created");
+        } catch (RuntimeException e) {
+            return ResponseEntity.badRequest().body(e.getMessage());
         }
-        return ResponseEntity.ok("User Created");
     }
 }
