@@ -1,7 +1,9 @@
 package com.example.eCommerce.UserInfo.Controller;
 
+import com.example.eCommerce.UserInfo.DTO.SignupRequest;
 import com.example.eCommerce.UserInfo.Service.UserService;
 import com.example.eCommerce.UserInfo.User;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,8 +19,11 @@ public class UserController {
     }
 
     @PostMapping("/signup")
-    public ResponseEntity<User> createUser(@RequestBody User user) {
-        User createdUser = userService.createUser(user);
-        return ResponseEntity.ok(createdUser);
+    public ResponseEntity<String> createUser(@RequestBody SignupRequest request) {
+        User createdUser = userService.createUser(request);
+        if (createdUser == null) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Passwords don't match");
+        }
+        return ResponseEntity.ok("User Created");
     }
 }

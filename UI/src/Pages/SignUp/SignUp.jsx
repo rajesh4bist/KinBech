@@ -11,6 +11,7 @@ const SignUp = () => {
         confirmPassword: ""
     });
     const [loading, setLoading] = useState(false);
+    const [match, setMatch] = useState(true);
 
     const takeUser = (e) => {
         const { name, value } = e.target;
@@ -23,7 +24,15 @@ const SignUp = () => {
 
     const submit = async (e) => {
         e.preventDefault();
+        if (user.password != user.confirmPassword) {
+            console.log("passwords don't match");
+            setMatch(false);
+            return;
+        }
+        
         setLoading(true);
+        setMatch(true);
+
         try {
             const response = await axios.post(
                 'http://localhost:8080/users/signup',
@@ -52,6 +61,7 @@ const SignUp = () => {
                         required />
                     <input type="password" placeholder="Password" name='password' value={user.password} onChange={takeUser} required />
                     <input type="password" placeholder="Confirm Password" name='confirmPassword' value={user.confirmPassword} onChange={takeUser} required />
+                    {match ? "" : <p className='no-match-field' style={{ color: "red" }}>Passwords don't match</p>}
                 </div>
 
                 <div>
