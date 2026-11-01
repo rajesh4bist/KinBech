@@ -3,7 +3,6 @@ package com.example.eCommerce.UserInfo.Controller;
 import com.example.eCommerce.UserInfo.DTO.SignupRequest;
 import com.example.eCommerce.UserInfo.Service.UserService;
 import com.example.eCommerce.UserInfo.User;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -26,5 +25,10 @@ public class UserController {
         } catch (RuntimeException e) {
             return ResponseEntity.badRequest().body(e.getMessage());
         }
+    }
+
+    @GetMapping("/login")
+    public ResponseEntity<User> getUser() {
+        return null;
     }
 }

@@ -4,6 +4,7 @@ import com.example.eCommerce.UserInfo.DTO.SignupRequest;
 import com.example.eCommerce.UserInfo.Repository.UserRepository;
 import com.example.eCommerce.UserInfo.User;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.GetMapping;
 
 import java.util.Objects;
 
@@ -32,4 +33,5 @@ public class UserService {
         User userRequest = userRepository.save(user);
         return userRequest;
     }
+
 }
