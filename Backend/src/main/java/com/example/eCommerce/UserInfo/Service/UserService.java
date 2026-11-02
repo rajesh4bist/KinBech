@@ -1,10 +1,10 @@
 package com.example.eCommerce.UserInfo.Service;
 
+import com.example.eCommerce.UserInfo.DTO.LoginRequest;
 import com.example.eCommerce.UserInfo.DTO.SignupRequest;
 import com.example.eCommerce.UserInfo.Repository.UserRepository;
 import com.example.eCommerce.UserInfo.User;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.GetMapping;
 
 import java.util.Objects;
 
@@ -32,6 +32,16 @@ public class UserService {
 
         User userRequest = userRepository.save(user);
         return userRequest;
+    }
+
+    public User getUser(LoginRequest request) {
+        if (userRepository.existsByEmail(request.getEmail())) {
+            User currentUser = userRepository.getUserByEmail(request.getEmail());
+            return currentUser;
+        } else {
+            throw new RuntimeException("User doesn't exist.");
+        }
+
     }
 
 }

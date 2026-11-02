@@ -1,8 +1,10 @@
 package com.example.eCommerce.UserInfo.Controller;
 
+import com.example.eCommerce.UserInfo.DTO.LoginRequest;
 import com.example.eCommerce.UserInfo.DTO.SignupRequest;
 import com.example.eCommerce.UserInfo.Service.UserService;
 import com.example.eCommerce.UserInfo.User;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -20,15 +22,20 @@ public class UserController {
     @PostMapping("/signup")
     public ResponseEntity<String> createUser(@RequestBody SignupRequest request) {
         try {
-            User createdUser = userService.createUser(request);
+            userService.createUser(request);
             return ResponseEntity.ok("User Created");
         } catch (RuntimeException e) {
             return ResponseEntity.badRequest().body(e.getMessage());
         }
     }
 
-    @GetMapping("/login")
-    public ResponseEntity<User> getUser() {
-        return null;
+    @PostMapping("/login")
+    public ResponseEntity<?> getUser(@RequestBody LoginRequest request) {
+        try {
+            User thisUser = userService.getUser(request);
+            return ResponseEntity.ok(thisUser);
+        } catch (RuntimeException e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+        }
     }
 }
