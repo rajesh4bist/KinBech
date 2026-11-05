@@ -32,7 +32,7 @@ const Header = ({ userResponse }) => {
                     <div className="cart-text">Cart</div>
                 </Link>
                 {userResponse ?
-                    <Link to="#" className="account-link header-link">
+                    <Link to="/account" className="account-link header-link">
                         <div>{userResponse}</div>
                     </Link>
                     :

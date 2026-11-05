@@ -7,6 +7,7 @@ import Cart from './Pages/Cart/Cart'
 import SignUp from './Pages/SignUp/SignUp'
 import Login from './Pages/SignUp/Login'
 import { useState } from 'react'
+import AccountPage from './Pages/Account/Account'
 
 function App() {
 
@@ -23,6 +24,7 @@ function App() {
           <Route path='cart' element={<Cart />}></Route>
           <Route path='signup' element={<SignUp />}></Route>
           <Route path='login' element={<Login setUserResponse={setUserResponse} />}></Route>
+          <Route path='account' element={<AccountPage />}></Route>
         </Routes>
       </main>
     </>
