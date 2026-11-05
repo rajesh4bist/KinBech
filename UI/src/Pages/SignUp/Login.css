@@ -103,6 +103,7 @@ body:has(.login-page-container) {
     display: flex;
     flex-direction: column;
     gap: 18px;
+    position: relative;
 }
 
 .login-input-fields input {
@@ -198,6 +199,24 @@ body:has(.login-page-container) {
 
 .login-form-main p strong {
     font-weight: 700;
+}
+
+.login-form-main .login-input-fields .no-match-field {
+    position: absolute;
+    top: 100%;
+    left: 32px;
+    margin: 6px 0 0;
+    font-size: 14px;
+    text-align: left;
+}
+
+.login-form-main .login-input-fields .error-field {
+    position: absolute;
+    top: 100%;
+    left: 32px;
+    margin: 6px 0 0;
+    font-size: 14px;
+    text-align: left;
 }
 
 @media (max-width: 720px) {

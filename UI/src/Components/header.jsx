@@ -1,7 +1,7 @@
 import { Link } from 'react-router'
 import './header.css'
 
-const Header = () => {
+const Header = ({ loggedIn, userResponse }) => {
     return (
         <div className="header">
             <div className="left-section">
@@ -31,10 +31,15 @@ const Header = () => {
                     <div className="cart-quantity">15</div>
                     <div className="cart-text">Cart</div>
                 </Link>
+                {loggedIn ?
+                    <Link to="signup" className="signup-link header-link">
+                        {userResponse.name}
+                    </Link>
+                    :
+                    <Link to="signup" className="signup-link header-link">
+                        <div>Sign Up</div>
+                    </Link>}
 
-                <Link to="signup" className="signup-link header-link">
-                    <div>Sign Up</div>
-                </Link>
             </div>
         </div >
     )

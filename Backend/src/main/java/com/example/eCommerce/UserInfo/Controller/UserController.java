@@ -3,7 +3,6 @@ package com.example.eCommerce.UserInfo.Controller;
 import com.example.eCommerce.UserInfo.DTO.LoginRequest;
 import com.example.eCommerce.UserInfo.DTO.SignupRequest;
 import com.example.eCommerce.UserInfo.Service.UserService;
-import com.example.eCommerce.UserInfo.User;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -32,10 +31,10 @@ public class UserController {
     @PostMapping("/login")
     public ResponseEntity<?> getUser(@RequestBody LoginRequest request) {
         try {
-            User thisUser = userService.getUser(request);
-            return ResponseEntity.ok(thisUser);
+            Boolean matchesPassword = userService.getUser(request);
+            return ResponseEntity.ok(matchesPassword);
         } catch (RuntimeException e) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
         }
     }
 }

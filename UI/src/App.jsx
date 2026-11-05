@@ -6,12 +6,16 @@ import Orders from './Pages/OrdersPage/Orders'
 import Cart from './Pages/Cart/Cart'
 import SignUp from './Pages/SignUp/SignUp'
 import Login from './Pages/SignUp/Login'
+import { useState } from 'react'
 
 function App() {
+
+  const [loggedIn, setLoggedIn] = useState(false);
+  const [userResponse, setUserResponse] = useState(null);
+
   return (
     <>
-
-      <Header />
+      <Header loggedIn={loggedIn} userResponse={userResponse} />
 
       <main className="main-content">
         <Routes>
@@ -19,7 +23,7 @@ function App() {
           <Route path='orders' element={<Orders />}></Route>
           <Route path='cart' element={<Cart />}></Route>
           <Route path='signup' element={<SignUp />}></Route>
-          <Route path='login' element={<Login />}></Route>
+          <Route path='login' element={<Login setLoggedIn={setLoggedIn} setUserResponse={setUserResponse} />}></Route>
         </Routes>
       </main>
     </>
