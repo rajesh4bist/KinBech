@@ -34,14 +34,16 @@ public class UserService {
         return userRequest;
     }
 
-    public Boolean getUser(LoginRequest request) {
+    public String getUser(LoginRequest request) {
         if (userRepository.existsByEmail(request.getEmail())) {
             User currentUser = userRepository.getUserByEmail(request.getEmail());
-            return Objects.equals(currentUser.getPassword(), request.getPassword());
+            if (Objects.equals(currentUser.getPassword(), request.getPassword())) {
+                return currentUser.getName();
+            }
+            return null;
         } else {
             throw new RuntimeException("User doesn't exist.");
         }
-
     }
 
 }

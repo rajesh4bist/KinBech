@@ -31,8 +31,11 @@ public class UserController {
     @PostMapping("/login")
     public ResponseEntity<?> getUser(@RequestBody LoginRequest request) {
         try {
-            Boolean matchesPassword = userService.getUser(request);
-            return ResponseEntity.ok(matchesPassword);
+            String userName = userService.getUser(request);
+            if (userName == null) {
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Incorrect password");
+            }
+            return ResponseEntity.ok(userName);
         } catch (RuntimeException e) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
         }

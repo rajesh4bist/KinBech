@@ -10,12 +10,11 @@ import { useState } from 'react'
 
 function App() {
 
-  const [loggedIn, setLoggedIn] = useState(false);
   const [userResponse, setUserResponse] = useState(null);
 
   return (
     <>
-      <Header loggedIn={loggedIn} userResponse={userResponse} />
+      <Header userResponse={userResponse} />
 
       <main className="main-content">
         <Routes>
@@ -23,7 +22,7 @@ function App() {
           <Route path='orders' element={<Orders />}></Route>
           <Route path='cart' element={<Cart />}></Route>
           <Route path='signup' element={<SignUp />}></Route>
-          <Route path='login' element={<Login setLoggedIn={setLoggedIn} setUserResponse={setUserResponse} />}></Route>
+          <Route path='login' element={<Login setUserResponse={setUserResponse} />}></Route>
         </Routes>
       </main>
     </>

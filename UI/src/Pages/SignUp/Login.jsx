@@ -3,7 +3,7 @@ import './Login.css'
 import axios from 'axios'
 import { useState } from 'react'
 
-const Login = ({ setLoggedIn, setUserResponse }) => {
+const Login = ({ setUserResponse }) => {
 
     const navigate = useNavigate();
 
@@ -29,9 +29,9 @@ const Login = ({ setLoggedIn, setUserResponse }) => {
             setLoading(true)
             const response = await axios.post("http://localhost:8080/users/login", user);
             if (response) {
-                navigate("/", { replace: true });
+                console.log(response.data);
                 setUserResponse(response.data);
-                setLoggedIn(true);
+                navigate("/", { replace: true });
             } else {
                 setMatched(false);
             }

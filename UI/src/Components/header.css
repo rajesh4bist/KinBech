@@ -148,7 +148,13 @@
     margin-right: 20px;
     width: 65px;
     font-weight: 700;
+}
 
+.header .account-link {
+    color: white;
+    margin-right: 20px;
+    width: 65px;
+    font-weight: 700;
 }
 
 @media (max-width: 500px) {
