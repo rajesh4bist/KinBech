@@ -40,7 +40,13 @@ public class UserController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
         }
     }
-    
+
+//    @PostMapping("/account")
+//    public ResponseEntity<?> accountSection(){
+//
+//    }
+
+
     @DeleteMapping("/delete")
     public ResponseEntity<?> deleteUser() {
         return null;

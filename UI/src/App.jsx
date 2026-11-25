@@ -6,12 +6,17 @@ import Orders from './Pages/OrdersPage/Orders'
 import Cart from './Pages/Cart/Cart'
 import SignUp from './Pages/SignUp/SignUp'
 import Login from './Pages/SignUp/Login'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import AccountPage from './Pages/Account/Account'
 
 function App() {
 
-  const [userResponse, setUserResponse] = useState(null);
+  const [userResponse, setUserResponse] = useState(() => localStorage.getItem('user'));
+  
+  useEffect(() => {
+    if (userResponse) localStorage.setItem('user', userResponse)
+    else localStorage.removeItem('user')
+  }, [userResponse])
 
   return (
     <>
