@@ -33,7 +33,7 @@ const Header = ({ userResponse }) => {
                 </Link>
                 {userResponse ?
                     <Link to="/account" className="account-link header-link">
-                        <div>{userResponse}</div>
+                        <div>{userResponse.name}</div>
                     </Link>
                     :
                     <Link to="signup" className="signup-link header-link">

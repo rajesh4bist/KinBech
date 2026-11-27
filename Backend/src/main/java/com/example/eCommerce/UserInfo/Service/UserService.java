@@ -1,6 +1,8 @@
 package com.example.eCommerce.UserInfo.Service;
 
+import com.example.eCommerce.UserInfo.DTO.AccountResponseDto;
 import com.example.eCommerce.UserInfo.DTO.LoginRequest;
+import com.example.eCommerce.UserInfo.DTO.LoginResponseDto;
 import com.example.eCommerce.UserInfo.DTO.SignupRequest;
 import com.example.eCommerce.UserInfo.Repository.UserRepository;
 import com.example.eCommerce.UserInfo.User;
@@ -34,16 +36,25 @@ public class UserService {
         return userRequest;
     }
 
-    public String getUser(LoginRequest request) {
+    private LoginResponseDto mapToLoginResponseDto(User currentUser) {
+        LoginResponseDto loginResponseDto = new LoginResponseDto();
+        loginResponseDto.setName(currentUser.getName());
+        loginResponseDto.setEmail(currentUser.getEmail());
+        return loginResponseDto;
+    }
+
+    public LoginResponseDto getUser(LoginRequest request) {
         if (userRepository.existsByEmail(request.getEmail())) {
             User currentUser = userRepository.getUserByEmail(request.getEmail());
             if (Objects.equals(currentUser.getPassword(), request.getPassword())) {
-                return currentUser.getName();
+                return mapToLoginResponseDto(currentUser);
             }
             return null;
         } else {
             throw new RuntimeException("User doesn't exist.");
         }
     }
+
+
 
 }

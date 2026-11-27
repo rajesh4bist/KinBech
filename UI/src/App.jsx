@@ -11,11 +11,20 @@ import AccountPage from './Pages/Account/Account'
 
 function App() {
 
-  const [userResponse, setUserResponse] = useState(() => localStorage.getItem('user'));
-  
+  const [userResponse, setUserResponse] = useState(() => {
+    const email = localStorage.getItem('userEmail')
+    const name = localStorage.getItem('userName')
+    return email ? { email, name } : null
+  });
+
   useEffect(() => {
-    if (userResponse) localStorage.setItem('user', userResponse)
-    else localStorage.removeItem('user')
+    if (userResponse) {
+      localStorage.setItem('userEmail', userResponse.email)
+      localStorage.setItem('userName', userResponse.name)
+    } else {
+      localStorage.removeItem('userEmail')
+      localStorage.removeItem('userName')
+    }
   }, [userResponse])
 
   return (
@@ -29,7 +38,7 @@ function App() {
           <Route path='cart' element={<Cart />}></Route>
           <Route path='signup' element={<SignUp />}></Route>
           <Route path='login' element={<Login setUserResponse={setUserResponse} />}></Route>
-          <Route path='account' element={<AccountPage />}></Route>
+          <Route path='account' element={<AccountPage userResponse={userResponse} />}></Route>
         </Routes>
       </main>
     </>

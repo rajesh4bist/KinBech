@@ -1,6 +1,6 @@
 package com.example.eCommerce.UserInfo.DTO;
 
-public class AccountResponseDTO {
+public class AccountResponseDto {
     private String name;
     private String email;
 

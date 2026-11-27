@@ -30,7 +30,7 @@ const Toggle = ({ checked, onChange, label }) => (
     </button>
 )
 
-const AccountPage = () => {
+const AccountPage = ({ userResponse }) => {
     const [activeTab, setActiveTab] = useState('profile')
 
     const [photo, setPhoto] = useState(null)
@@ -48,12 +48,20 @@ const AccountPage = () => {
     const [showDeleteModal, setShowDeleteModal] = useState(false)
     const [deleteText, setDeleteText] = useState('')
 
+    // useEffect(() => {
+    //     axios.get('http://localhost:8080/users/account', {
+    //         params: {
+    //             email: userResponse.email
+    //         }
+    //     })
+    //         .then((res) => setProfile(res.data))
+    //         .catch(() => setProfileError("Couldn't load your account details."))
+    //         .finally(() => setProfileLoading(false))
+    // }, [])
+    
     useEffect(() => {
-        axios.get('http://localhost:8080/users/account')
-            .then((res) => setProfile(res.data))
-            .catch(() => setProfileError("Couldn't load your account details."))
-            .finally(() => setProfileLoading(false))
-    }, [])
+        setProfile(userResponse);
+    }, [userResponse]);
 
     const initial = (profile?.name?.trim()[0] || 'U').toUpperCase()
     const passwordsMismatch = passwords.confirm !== '' && passwords.next !== passwords.confirm
@@ -85,7 +93,6 @@ const AccountPage = () => {
     }
 
     const handleDeleteAccount = () => {
-        // TODO: call your delete-account API, then log the user out and redirect home
         closeDeleteModal()
     }
     return (
@@ -152,9 +159,9 @@ const AccountPage = () => {
                                     <h2>Account Details</h2>
                                     <p>The personal information saved on your account.</p>
                                 </div>
-
+                                {/* 
                                 {profileLoading && <p className="account-status">Loading your details...</p>}
-                                {profileError && <p className="account-status account-status-error">{profileError}</p>}
+                                {profileError && <p className="account-status account-status-error">{profileError}</p>} */}
 
                                 {profile && (
                                     <>
