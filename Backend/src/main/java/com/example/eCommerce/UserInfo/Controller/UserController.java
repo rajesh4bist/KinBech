@@ -33,7 +33,7 @@ public class UserController {
         try {
             String userName = userService.getUser(request);
             if (userName == null) {
-                return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Incorrect password");
+                return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Incorrect password");
             }
             return ResponseEntity.ok(userName);
         } catch (RuntimeException e) {
@@ -41,10 +41,10 @@ public class UserController {
         }
     }
 
-//    @PostMapping("/account")
-//    public ResponseEntity<?> accountSection(){
-//
-//    }
+    @GetMapping("/account")
+    public ResponseEntity<?> accountSection() {
+
+    }
 
 
     @DeleteMapping("/delete")
