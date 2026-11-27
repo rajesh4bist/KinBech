@@ -42,7 +42,7 @@ public class UserController {
     }
 
     @GetMapping("/account")
-    public ResponseEntity<?> accountSection() {
+    public ResponseEntity<?> accountSection(@RequestParam String email) {
 
     }
 
