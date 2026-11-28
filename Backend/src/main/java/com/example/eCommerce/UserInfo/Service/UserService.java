@@ -3,6 +3,7 @@ package com.example.eCommerce.UserInfo.Service;
 import com.example.eCommerce.UserInfo.DTO.*;
 import com.example.eCommerce.UserInfo.Repository.UserRepository;
 import com.example.eCommerce.UserInfo.User;
+import org.jspecify.annotations.NonNull;
 import org.springframework.stereotype.Service;
 
 import java.util.Objects;
@@ -59,12 +60,12 @@ public class UserService {
             currentUser.setName(editAccountDetailsRequestDto.getName());
             currentUser.setEmail(editAccountDetailsRequestDto.getEmail());
             return mapToEditAccountDetailsDto(currentUser);
-
+        } else {
+            throw new RuntimeException("Incorrect Password");
         }
-        return null;
     }
 
-    private EditAccountDetailsResponseDto mapToEditAccountDetailsDto(User currentUser) {
+    private @NonNull EditAccountDetailsResponseDto mapToEditAccountDetailsDto(User currentUser) {
         EditAccountDetailsResponseDto responseDto = new EditAccountDetailsResponseDto();
         responseDto.setName(currentUser.getName());
         responseDto.setEmail(currentUser.getEmail());

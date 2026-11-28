@@ -1,9 +1,6 @@
 package com.example.eCommerce.UserInfo.Controller;
 
-import com.example.eCommerce.UserInfo.DTO.EditAccountDetailsRequestDto;
-import com.example.eCommerce.UserInfo.DTO.LoginRequest;
-import com.example.eCommerce.UserInfo.DTO.LoginResponseDto;
-import com.example.eCommerce.UserInfo.DTO.SignupRequest;
+import com.example.eCommerce.UserInfo.DTO.*;
 import com.example.eCommerce.UserInfo.Service.UserService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -45,8 +42,13 @@ public class UserController {
 
 
     @PutMapping("/editAccount")
-    public ResponseEntity<?> editAccountDetails(EditAccountDetailsRequestDto editAccountDetailsDto){
-        return null;
+    public ResponseEntity<?> editAccountDetails(@RequestBody EditAccountDetailsRequestDto editAccountDetailsDto) {
+        try {
+            EditAccountDetailsResponseDto editAccountDetailsResponseDto = userService.editAccountDetails(editAccountDetailsDto);
+            return ResponseEntity.ok(editAccountDetailsResponseDto);
+        } catch (RuntimeException e) {
+            return ResponseEntity.status(HttpStatus.CONFLICT).body(e.getMessage());
+        }
     }
 
     @DeleteMapping("/delete")
