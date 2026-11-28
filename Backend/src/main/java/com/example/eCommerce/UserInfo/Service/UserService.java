@@ -1,8 +1,6 @@
 package com.example.eCommerce.UserInfo.Service;
 
-import com.example.eCommerce.UserInfo.DTO.LoginRequest;
-import com.example.eCommerce.UserInfo.DTO.LoginResponseDto;
-import com.example.eCommerce.UserInfo.DTO.SignupRequest;
+import com.example.eCommerce.UserInfo.DTO.*;
 import com.example.eCommerce.UserInfo.Repository.UserRepository;
 import com.example.eCommerce.UserInfo.User;
 import org.springframework.stereotype.Service;
@@ -53,4 +51,25 @@ public class UserService {
             throw new RuntimeException("User doesn't exist.");
         }
     }
+
+    //To be used when Edit Account is used
+    public EditAccountDetailsResponseDto editAccountDetails(EditAccountDetailsRequestDto editAccountDetailsRequestDto) {
+        User currentUser = userRepository.getUserByEmail(editAccountDetailsRequestDto.getEmail());
+        if (Objects.equals(currentUser.getPassword(), editAccountDetailsRequestDto.getPassword())) {
+            currentUser.setName(editAccountDetailsRequestDto.getName());
+            currentUser.setEmail(editAccountDetailsRequestDto.getEmail());
+            return mapToEditAccountDetailsDto(currentUser);
+
+        }
+        return null;
+    }
+
+    private EditAccountDetailsResponseDto mapToEditAccountDetailsDto(User currentUser) {
+        EditAccountDetailsResponseDto responseDto = new EditAccountDetailsResponseDto();
+        responseDto.setName(currentUser.getName());
+        responseDto.setEmail(currentUser.getEmail());
+        return responseDto;
+    }
+
+    //To be used when password is to be changed.
 }

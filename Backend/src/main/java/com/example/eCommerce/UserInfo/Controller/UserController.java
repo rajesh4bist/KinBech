@@ -1,5 +1,6 @@
 package com.example.eCommerce.UserInfo.Controller;
 
+import com.example.eCommerce.UserInfo.DTO.EditAccountDetailsRequestDto;
 import com.example.eCommerce.UserInfo.DTO.LoginRequest;
 import com.example.eCommerce.UserInfo.DTO.LoginResponseDto;
 import com.example.eCommerce.UserInfo.DTO.SignupRequest;
@@ -40,6 +41,12 @@ public class UserController {
         } catch (RuntimeException e) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
         }
+    }
+
+
+    @PutMapping("/editAccount")
+    public ResponseEntity<?> editAccountDetails(EditAccountDetailsRequestDto editAccountDetailsDto){
+        return null;
     }
 
     @DeleteMapping("/delete")

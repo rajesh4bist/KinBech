@@ -1,7 +1,7 @@
 package com.example.eCommerce.UserInfo.DTO;
 
 public class LoginRequest {
-    
+
     private String email;
     private String password;
 
