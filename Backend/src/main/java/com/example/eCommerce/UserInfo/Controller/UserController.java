@@ -42,7 +42,6 @@ public class UserController {
         }
     }
 
-
     @DeleteMapping("/delete")
     public ResponseEntity<?> deleteUser() {
         return null;

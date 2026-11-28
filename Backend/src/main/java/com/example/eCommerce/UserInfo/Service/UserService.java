@@ -1,6 +1,5 @@
 package com.example.eCommerce.UserInfo.Service;
 
-import com.example.eCommerce.UserInfo.DTO.AccountResponseDto;
 import com.example.eCommerce.UserInfo.DTO.LoginRequest;
 import com.example.eCommerce.UserInfo.DTO.LoginResponseDto;
 import com.example.eCommerce.UserInfo.DTO.SignupRequest;
@@ -54,7 +53,4 @@ public class UserService {
             throw new RuntimeException("User doesn't exist.");
         }
     }
-
-
-
 }
